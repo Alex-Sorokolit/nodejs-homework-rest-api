@@ -6,6 +6,10 @@ const contactsRouter = require("./routes/api/contacts");
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+const dotenv = require("dotenv");
+
+// отримуємо рядок підключення  до бази
+dotenv.config();
 
 // middelwares
 app.use(logger(formatsLogger));

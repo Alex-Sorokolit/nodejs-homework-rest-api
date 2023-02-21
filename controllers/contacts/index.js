@@ -3,6 +3,7 @@ const getById = require("./getById");
 const add = require("./add");
 const remove = require("./remove");
 const update = require("./update");
+const updateFavorite = require("./updateFavorite");
 const { ctrlWrapper } = require("../../middlewares");
 
 module.exports = {
@@ -11,4 +12,5 @@ module.exports = {
   add: ctrlWrapper(add),
   remove: ctrlWrapper(remove),
   update: ctrlWrapper(update),
+  updateFavorite: ctrlWrapper(updateFavorite),
 };
