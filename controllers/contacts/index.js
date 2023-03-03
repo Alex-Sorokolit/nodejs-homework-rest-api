@@ -4,7 +4,7 @@ const add = require("./add");
 const remove = require("./remove");
 const update = require("./update");
 const updateFavorite = require("./updateFavorite");
-const { ctrlWrapper } = require("../../middlewares");
+const { ctrlWrapper } = require("../../helpers");
 
 module.exports = {
   getAll: ctrlWrapper(getAll),
