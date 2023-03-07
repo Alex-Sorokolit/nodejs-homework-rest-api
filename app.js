@@ -20,9 +20,11 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
+
 // всі запити які починаються з api/contacts шукати в роутері
 app.use("/api/contacts", contactsRouter);
 
+// обробка помилки 404
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
