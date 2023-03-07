@@ -1,9 +1,10 @@
-const { Contacts } = require("../../models");
+const { Contact } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const update = async (req, res) => {
   const { contactId } = req.params;
-  const result = await Contacts.findByIdAndUpdate(contactId, req.body, {
+  // new: true поверне оновлений об'єкт
+  const result = await Contact.findByIdAndUpdate(contactId, req.body, {
     new: true,
   });
   if (!result) {

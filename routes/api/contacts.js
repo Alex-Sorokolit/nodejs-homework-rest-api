@@ -1,18 +1,33 @@
 const express = require("express");
-const router = express.Router();
+const contactsRouter = express.Router();
 const { contacts: ctrl } = require("../../controllers");
-const { validateBody } = require("../../middlewares");
-const { joiSchema, favoriteJoiSchema } = require("../../models");
+const { validateBody, isValidId } = require("../../middlewares");
+const {
+  contactSchemas: { joiContactsSchema, joiFavoriteSchema },
+} = require("../../models");
+const { authenticate } = require("../../middlewares");
 
-router.get("/", ctrl.getAll);
-router.get("/:contactId", ctrl.getById);
-router.post("/", validateBody(joiSchema), ctrl.add);
-router.delete("/:contactId", ctrl.remove);
-router.put("/:contactId", validateBody(joiSchema), ctrl.update);
-router.patch(
+contactsRouter.get("/", authenticate, ctrl.getAll);
+contactsRouter.get("/:contactId", authenticate, isValidId, ctrl.getById);
+contactsRouter.post(
+  "/",
+  authenticate,
+  validateBody(joiContactsSchema),
+  ctrl.add
+);
+contactsRouter.delete("/:contactId", authenticate, isValidId, ctrl.remove);
+contactsRouter.put(
+  "/:contactId",
+  authenticate,
+  isValidId,
+  validateBody(joiContactsSchema),
+  ctrl.update
+);
+contactsRouter.patch(
   "/:contactId/favorite",
-  validateBody(favoriteJoiSchema),
+  authenticate,
+  validateBody(joiFavoriteSchema),
   ctrl.updateFavorite
 );
 
-module.exports = router;
+module.exports = contactsRouter;

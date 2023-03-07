@@ -1,10 +1,10 @@
-const { Contacts } = require("../../models");
+const { Contact } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const updateFavorite = async (req, res) => {
   const { contactId } = req.params;
   const { favorite } = req.body;
-  const result = await Contacts.findByIdAndUpdate(
+  const result = await Contact.findByIdAndUpdate(
     contactId,
     { favorite },
     {
