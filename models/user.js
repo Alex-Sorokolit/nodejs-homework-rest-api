@@ -39,6 +39,16 @@ const userSchema = Schema(
       type: String,
       required: true,
     },
+    // чи підтвердила людина свій email
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    // код підтвердження який ми пришлемо користувачу на пошту
+    verificationToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
   { versionKey: false, timestamps: true, strictQuery: false }
 );

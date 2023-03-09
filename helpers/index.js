@@ -3,4 +3,6 @@
 const ctrlWrapper = require("./ctrlWrapper");
 const HttpError = require("./httpError");
 const handleMongooseError = require("./handleMongooseError");
-module.exports = { HttpError, ctrlWrapper, handleMongooseError };
+const sendEmail = require("./sendEmail");
+
+module.exports = { HttpError, ctrlWrapper, handleMongooseError, sendEmail };

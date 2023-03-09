@@ -8,6 +8,8 @@ const usersRouter = express.Router();
 // отримання поточного користувача
 usersRouter.get("/current", authenticate, ctrl.getCurrent);
 
+// Підтвердження email
+usersRouter.get("/verify/:verificationToken", ctrl.verifyEmail);
 // заміна аватарки
 usersRouter.patch(
   "/avatars",
